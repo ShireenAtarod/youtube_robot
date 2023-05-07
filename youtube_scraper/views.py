@@ -72,11 +72,9 @@ def scrap(request, keyWord):
         channel = Channel(link=link, subscriber=subscriber_no, keyword=keyWord)
         channel.save()
 
-    save_file = open("savedata.json", "w")  
+    save_file = open(f"{keyWord}-savedata.json", "w")  
     json.dump(results, save_file, indent = 6)  
     save_file.close()  
 
-    # response = HttpResponse(save_file.read(), content_type='application/json')
-    # response['Content-Disposition'] = 'attachment; filename=savedata.json'
 
 
