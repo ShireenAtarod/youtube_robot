@@ -72,7 +72,7 @@ def scrap(request, keyWord):
         channel = Channel(link=link, subscriber=subscriber_no, keyword=keyWord)
         channel.save()
 
-    save_file = open("savedata.json", "rb")  
+    save_file = open("savedata.json", "w")  
     json.dump(results, save_file, indent = 6)  
     save_file.close()  
 
