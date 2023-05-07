@@ -27,7 +27,6 @@ def index(request):
 
 
 def scrap(request, keyWord):
-    print(keyWord)
     options = Options()
     options.headless = True
     options.add_argument("--window-size=1920,1080")
@@ -76,5 +75,7 @@ def scrap(request, keyWord):
     json.dump(results, save_file, indent = 6)  
     save_file.close()  
 
-
-
+    response = HttpResponse('application/json')
+    response['Content-Disposition'] = f'attachment; filename={keyWord}-savedata.json'
+   
+    return response
